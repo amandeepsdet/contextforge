@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------------------
+# ContextForge .gitignore
+# Implementation has not started yet (Milestone 1A). These entries are
+# forward-looking so that no generated artifacts are accidentally committed.
+# ---------------------------------------------------------------------------
+
+# Rust / Cargo (future implementation)
+/target/
+**/*.rs.bk
+Cargo.lock.orig
+
+# Build & dist artifacts
+/dist/
+/build/
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+
+# Benchmarks: raw corpora and generated outputs should not be committed.
+# Only benchmark *definitions*, *methodology*, and *specifications* belong in git.
+/benchmarks/corpora/
+/benchmarks/outputs/
+/benchmarks/cache/
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*.xls
+
+# Python (used only for research/benchmark tooling, if any)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# Logs & temp
+*.log
+tmp/
+temp/
