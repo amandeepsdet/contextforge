@@ -1,7 +1,7 @@
 # ContextForge
 
 > An open-source, Rust-based **document compiler** that transforms complex
-> document into semantically faithful, token-efficient context for AI systems.
+> documents into semantically faithful, token-efficient context for AI systems.
 
 **Project status: Milestone 1A — Document Fidelity Model (research / discovery).**
 No parser, no extraction code, and no benchmark results exist yet. This
