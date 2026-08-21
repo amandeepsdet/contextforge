@@ -20,10 +20,15 @@ Cargo.lock.orig
 *.exe
 
 # Benchmarks: raw corpora and generated outputs should not be committed.
-# Only benchmark *definitions*, *methodology*, and *specifications* belong in git.
+# Only benchmark *definitions*, *methodology*, *schemas*, *ground truth*,
+# *questions*, *manifests*, and *reports* belong in git.
 /benchmarks/corpora/
 /benchmarks/outputs/
 /benchmarks/cache/
+# Raw corpus files and raw system outputs (see 02_benchmark_spec.md §5.3, §8, §22).
+/benchmarks/corpus/files/
+/benchmarks/runs/**/raw/
+/benchmarks/runs/**/outputs/
 *.pdf
 *.docx
 *.pptx
