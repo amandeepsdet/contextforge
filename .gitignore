@@ -27,6 +27,7 @@ Cargo.lock.orig
 /benchmarks/cache/
 # Raw corpus files and raw system outputs (see 02_benchmark_spec.md §5.3, §8, §22).
 /benchmarks/corpus/files/
+/benchmarks/corpus/raw/
 /benchmarks/runs/**/raw/
 /benchmarks/runs/**/outputs/
 *.pdf

@@ -1,0 +1,174 @@
+{
+  "AP-01": {
+    "name": "Multi-column reading-order",
+    "documents": [
+      "CF-006",
+      "CF-007",
+      "CF-008",
+      "CF-009",
+      "CF-010",
+      "CF-011",
+      "CF-017"
+    ]
+  },
+  "AP-02": {
+    "name": "Multi-page table continuation",
+    "documents": [
+      "CF-001",
+      "CF-004",
+      "CF-015"
+    ]
+  },
+  "AP-03": {
+    "name": "Nested/merged table headers",
+    "documents": [
+      "CF-004",
+      "CF-016",
+      "CF-017",
+      "CF-019",
+      "CF-020",
+      "CF-021",
+      "CF-022",
+      "CF-023",
+      "CF-024"
+    ]
+  },
+  "AP-04": {
+    "name": "Chart + table relationship",
+    "documents": [
+      "CF-001",
+      "CF-002",
+      "CF-003",
+      "CF-009",
+      "CF-026",
+      "CF-029"
+    ]
+  },
+  "AP-05": {
+    "name": "Figure + caption",
+    "documents": [
+      "CF-006",
+      "CF-007",
+      "CF-008",
+      "CF-009",
+      "CF-010",
+      "CF-011"
+    ]
+  },
+  "AP-06": {
+    "name": "Footnote association",
+    "documents": [
+      "CF-012",
+      "CF-013",
+      "CF-014"
+    ]
+  },
+  "AP-07": {
+    "name": "Repeated headers/footers",
+    "documents": [
+      "CF-001",
+      "CF-002",
+      "CF-003",
+      "CF-004",
+      "CF-014",
+      "CF-015",
+      "CF-016",
+      "CF-017",
+      "CF-018",
+      "CF-026",
+      "CF-027",
+      "CF-028"
+    ]
+  },
+  "AP-08": {
+    "name": "Semantic duplication",
+    "documents": [
+      "CF-005",
+      "CF-012",
+      "CF-013",
+      "CF-014",
+      "CF-021",
+      "CF-023",
+      "CF-030"
+    ]
+  },
+  "AP-09": {
+    "name": "Cross-page references",
+    "documents": [
+      "CF-006",
+      "CF-007",
+      "CF-008",
+      "CF-010",
+      "CF-011",
+      "CF-012",
+      "CF-013",
+      "CF-014",
+      "CF-015",
+      "CF-016",
+      "CF-017",
+      "CF-018"
+    ]
+  },
+  "AP-10": {
+    "name": "Units and percentages",
+    "documents": [
+      "CF-001",
+      "CF-002",
+      "CF-003",
+      "CF-005",
+      "CF-029",
+      "CF-030"
+    ]
+  },
+  "AP-11": {
+    "name": "Financial tables with totals",
+    "documents": [
+      "CF-001",
+      "CF-002",
+      "CF-003",
+      "CF-004",
+      "CF-005",
+      "CF-020",
+      "CF-022",
+      "CF-024",
+      "CF-025",
+      "CF-026",
+      "CF-027",
+      "CF-028",
+      "CF-030"
+    ]
+  },
+  "AP-12": {
+    "name": "Text boxes / floating elements",
+    "documents": [
+      "CF-009",
+      "CF-020",
+      "CF-021",
+      "CF-022",
+      "CF-023",
+      "CF-024",
+      "CF-025",
+      "CF-029"
+    ]
+  },
+  "AP-13": {
+    "name": "Mixed-orientation pages",
+    "documents": [
+      "CF-002",
+      "CF-003"
+    ]
+  },
+  "AP-14": {
+    "name": "Scanned pages",
+    "documents": []
+  },
+  "AP-15": {
+    "name": "Diagram / architecture relationships",
+    "documents": [
+      "CF-010",
+      "CF-015",
+      "CF-018",
+      "CF-019"
+    ]
+  }
+}

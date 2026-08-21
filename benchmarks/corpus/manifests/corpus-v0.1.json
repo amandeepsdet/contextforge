@@ -1,0 +1,1248 @@
+{
+  "benchmark": "ContextForge",
+  "artifact": "corpus",
+  "version": "corpus-v0.1",
+  "status": "RESEARCH CORPUS (first version) - not a production or final benchmark",
+  "created": "2026-08-21",
+  "spec_reference": "docs/milestone-1/02_benchmark_spec.md (Milestone 1B-1)",
+  "fidelity_model_reference": "docs/milestone-1/01_document_fidelity_model.md (Milestone 1A, frozen)",
+  "notes": [
+    "Byte-level fields (sha256, file_size_bytes) and page_count are populated ONLY by running tools/corpus/download_corpus.py --update against the recorded source_url. They are null until verified; nothing here is hand-entered.",
+    "Raw document files are git-ignored (benchmarks/corpus/raw/). Non-redistributable documents are referenced by URL + hash only.",
+    "adversarial_patterns use the 15 IDs from fidelity model Section 13 (AP-01..AP-15).",
+    "fidelity_dimensions use: content, structure, layout, relationship, semantic, provenance, answerability (fidelity model Section 3)."
+  ],
+  "field_legend": {
+    "redistributable": "true only when the license permits redistributing the file itself; false = reference/obtain-by-URL only.",
+    "native_or_scanned": "native = born-digital text layer; scanned = image-only (needs OCR); to be confirmed objectively post-download.",
+    "difficulty": "easy | medium | hard | adversarial (see difficulty_matrix.csv for the measurable factors).",
+    "page_count": "null until computed by pypdf during ingestion."
+  },
+  "adversarial_pattern_ids": {
+    "AP-01": "Multi-column reading-order ambiguity",
+    "AP-02": "Multi-page table continuation",
+    "AP-03": "Nested / merged table headers",
+    "AP-04": "Chart + table relationship",
+    "AP-05": "Figure + caption relationship",
+    "AP-06": "Footnote association",
+    "AP-07": "Repeated headers / footers",
+    "AP-08": "Semantic duplication",
+    "AP-09": "Cross-page references",
+    "AP-10": "Units and percentages",
+    "AP-11": "Financial tables with totals",
+    "AP-12": "Text boxes / floating elements",
+    "AP-13": "Mixed orientation pages",
+    "AP-14": "Scanned pages",
+    "AP-15": "Diagram / architecture relationships"
+  },
+  "documents": [
+    {
+      "document_id": "CF-001",
+      "category": "financial_annual_report",
+      "title": "Monetary Policy Report, February 2025",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/publications/files/20250207_mprfullreport.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-001_fed_mpr_2025-02.pdf",
+      "sha256": "728293cfbfeb672979115ab969cf6ec85cd62977f643eaee397334c6a9534ebd",
+      "file_size_bytes": 10004899,
+      "mime_type": "application/pdf",
+      "page_count": 83,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "charts",
+        "financial_tables",
+        "footnotes",
+        "multi_page_tables",
+        "percentage_points"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship",
+        "semantic",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-04",
+        "AP-10",
+        "AP-11",
+        "AP-07",
+        "AP-02"
+      ],
+      "benchmark_relevance": "Chart-and-table financial reporting with percentage-point vs percent distinctions and multi-page tables.",
+      "inclusion_reason": "Public-domain, chart-dense economic report stressing chart<->table relationships and semantic unit distinctions.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-002",
+      "category": "financial_annual_report",
+      "title": "Monetary Policy Report, July 2024",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/monetarypolicy/files/20240705_mprfullreport.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-002_fed_mpr_2024-07.pdf",
+      "sha256": "6cfad88dd4ee058a01db2012bf009c18da45e5306301edf3ff5d3b486644d09d",
+      "file_size_bytes": 1795174,
+      "mime_type": "application/pdf",
+      "page_count": 79,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "charts",
+        "financial_tables",
+        "footnotes",
+        "percentage_points",
+        "landscape_tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship",
+        "semantic",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-04",
+        "AP-10",
+        "AP-11",
+        "AP-07",
+        "AP-13"
+      ],
+      "benchmark_relevance": "Second period of the same series to test intra-series consistency of chart/table handling.",
+      "inclusion_reason": "Public-domain chart/table financial report; series consistency check.",
+      "exclusion_reason": null,
+      "notes": "QA probe found 3 landscape pages (objective evidence for AP-13 mixed orientation)."
+    },
+    {
+      "document_id": "CF-003",
+      "category": "financial_annual_report",
+      "title": "Monetary Policy Report, June 2023",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/monetarypolicy/files/20230616_mprfullreport.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-003_fed_mpr_2023-06.pdf",
+      "sha256": "802da7277bbf874e0a5531999d9b1f8a7046211e63ab0a486beb92f59e674d81",
+      "file_size_bytes": 5406700,
+      "mime_type": "application/pdf",
+      "page_count": 73,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "charts",
+        "financial_tables",
+        "footnotes",
+        "percentage_points",
+        "landscape_tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship",
+        "semantic",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-04",
+        "AP-10",
+        "AP-11",
+        "AP-07",
+        "AP-13"
+      ],
+      "benchmark_relevance": "Third period of the series.",
+      "inclusion_reason": "Public-domain chart/table financial report; series consistency check.",
+      "exclusion_reason": null,
+      "notes": "QA probe found 3 landscape pages (objective evidence for AP-13 mixed orientation)."
+    },
+    {
+      "document_id": "CF-004",
+      "category": "financial_annual_report",
+      "title": "Internal Revenue Service Data Book (Publication 55-B)",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/p55b.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-004_irs_data_book_p55b.pdf",
+      "sha256": "c5d69d23ce948231af68f4d99f8820b00c9864f7adf9a288929465b04b710181",
+      "file_size_bytes": 3561076,
+      "mime_type": "application/pdf",
+      "page_count": 94,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "dense_financial_tables",
+        "multi_page_tables",
+        "totals",
+        "merged_headers"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-02",
+        "AP-03",
+        "AP-11",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Dense multi-page statistical financial tables with totals and merged headers.",
+      "inclusion_reason": "Public-domain, extremely table-dense document stressing table structure and totals.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-005",
+      "category": "financial_annual_report",
+      "title": "Berkshire Hathaway Inc. — 2023 Shareholder Letter",
+      "source_organization": "Berkshire Hathaway Inc.",
+      "source_url": "https://www.berkshirehathaway.com/letters/2023ltr.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Copyright Berkshire Hathaway Inc. (publicly available; redistribution not granted)",
+      "license_url": "https://www.berkshirehathaway.com/",
+      "redistributable": false,
+      "local_filename": "CF-005_berkshire_2023_letter.pdf",
+      "sha256": "829169be21f4ce05202720fe5645cc1b9a5b1ae20bf5e6ebaff987349766eafd",
+      "file_size_bytes": 122415,
+      "mime_type": "application/pdf",
+      "page_count": 16,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "financial_tables",
+        "narrative_number_relationships",
+        "totals"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-08",
+        "AP-10"
+      ],
+      "benchmark_relevance": "Narrative-plus-table financial reporting where prose explains table values (L5/L6).",
+      "inclusion_reason": "Well-known financial narrative tightly coupled to tabular figures; reference-only (copyright).",
+      "exclusion_reason": null,
+      "notes": "Metadata + hash only; file not redistributed. Obtain from source_url."
+    },
+    {
+      "document_id": "CF-006",
+      "category": "research_paper",
+      "title": "Docling Technical Report",
+      "source_organization": "arXiv (IBM Research authors)",
+      "source_url": "https://arxiv.org/pdf/2408.09869",
+      "retrieval_date": "2026-08-21",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "redistributable": true,
+      "local_filename": "CF-006_arxiv_2408.09869_docling.pdf",
+      "sha256": "82dd470712ce8389f19f20eb9330475e2166a281f8c7990a9f1d0763d73b4d22",
+      "file_size_bytes": 5566575,
+      "mime_type": "application/pdf",
+      "page_count": 9,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "two_column",
+        "figures",
+        "captions",
+        "references",
+        "tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-05",
+        "AP-09"
+      ],
+      "benchmark_relevance": "Two-column academic layout with figure/caption and cross-reference relationships; CC BY (redistributable).",
+      "inclusion_reason": "Openly licensed two-column paper; clean reference for layout/relationship dimensions.",
+      "exclusion_reason": null,
+      "notes": "License confirmed CC BY 4.0 on the arXiv abstract page."
+    },
+    {
+      "document_id": "CF-007",
+      "category": "research_paper",
+      "title": "DocVQA: A Dataset for VQA on Document Images",
+      "source_organization": "arXiv",
+      "source_url": "https://arxiv.org/pdf/2007.00398",
+      "retrieval_date": "2026-08-21",
+      "license": "UNKNOWN (arXiv per-paper license; verify before redistribution)",
+      "license_url": "https://arxiv.org/abs/2007.00398",
+      "redistributable": false,
+      "local_filename": "CF-007_arxiv_2007.00398_docvqa.pdf",
+      "sha256": "ead7ea62e5a2dfbb937e66f6dd6c035ba761928c37c86fc7fdbba18c6313803c",
+      "file_size_bytes": 12489241,
+      "mime_type": "application/pdf",
+      "page_count": 23,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "two_column",
+        "figures",
+        "captions",
+        "references",
+        "tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-05",
+        "AP-09"
+      ],
+      "benchmark_relevance": "Two-column paper; freely downloadable from arXiv; redistribution license unverified.",
+      "inclusion_reason": "Two-column academic layout; obtain-by-URL (license unverified).",
+      "exclusion_reason": null,
+      "notes": "arXiv default license does not necessarily grant redistribution; marked non-redistributable pending verification."
+    },
+    {
+      "document_id": "CF-008",
+      "category": "research_paper",
+      "title": "Hierarchical multimodal transformers for Multipage DocVQA",
+      "source_organization": "arXiv",
+      "source_url": "https://arxiv.org/pdf/2212.05935",
+      "retrieval_date": "2026-08-21",
+      "license": "UNKNOWN (arXiv per-paper license; verify before redistribution)",
+      "license_url": "https://arxiv.org/abs/2212.05935",
+      "redistributable": false,
+      "local_filename": "CF-008_arxiv_2212.05935_mpdocvqa.pdf",
+      "sha256": "5af3a3d081973119b5f7553498d5e533d7c30deb76d171d8f13ec2d736ffb580",
+      "file_size_bytes": 7354424,
+      "mime_type": "application/pdf",
+      "page_count": 14,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "two_column",
+        "figures",
+        "captions",
+        "references"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-05",
+        "AP-09"
+      ],
+      "benchmark_relevance": "Two-column paper on multipage documents; obtain-by-URL.",
+      "inclusion_reason": "Two-column academic layout; license unverified.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-009",
+      "category": "mixed_adversarial",
+      "title": "InfographicVQA",
+      "source_organization": "arXiv",
+      "source_url": "https://arxiv.org/pdf/2104.12756",
+      "retrieval_date": "2026-08-21",
+      "license": "UNKNOWN (arXiv per-paper license; verify before redistribution)",
+      "license_url": "https://arxiv.org/abs/2104.12756",
+      "redistributable": false,
+      "local_filename": "CF-009_arxiv_2104.12756_infographicvqa.pdf",
+      "sha256": "a2fd9d7e2a25c34933507873896ac4c2534d57ee947e6f1627794c541b61f6f5",
+      "file_size_bytes": 8778220,
+      "mime_type": "application/pdf",
+      "page_count": 27,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "adversarial",
+      "difficulty_tags": [
+        "infographics",
+        "charts",
+        "figures",
+        "spatial_grouping",
+        "two_column"
+      ],
+      "fidelity_dimensions": [
+        "layout",
+        "relationship",
+        "semantic",
+        "answerability"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-04",
+        "AP-05",
+        "AP-12"
+      ],
+      "benchmark_relevance": "Discusses infographic understanding; the reproduced infographic figures stress spatial/relational reading.",
+      "inclusion_reason": "Infographic-heavy paper; adversarial spatial/relationship reading.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-010",
+      "category": "research_paper",
+      "title": "Attention Is All You Need",
+      "source_organization": "arXiv",
+      "source_url": "https://arxiv.org/pdf/1706.03762",
+      "retrieval_date": "2026-08-21",
+      "license": "UNKNOWN (arXiv per-paper license; verify before redistribution)",
+      "license_url": "https://arxiv.org/abs/1706.03762",
+      "redistributable": false,
+      "local_filename": "CF-010_arxiv_1706.03762_attention.pdf",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "file_size_bytes": 2215244,
+      "mime_type": "application/pdf",
+      "page_count": 15,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "two_column",
+        "architecture_diagram",
+        "figures",
+        "captions",
+        "formulas",
+        "tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship",
+        "semantic"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-05",
+        "AP-09",
+        "AP-15"
+      ],
+      "benchmark_relevance": "Contains a well-known architecture diagram (AP-15) plus formulas and a results table.",
+      "inclusion_reason": "Architecture-diagram + formula + table composite in two-column layout.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-011",
+      "category": "research_paper",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_organization": "arXiv",
+      "source_url": "https://arxiv.org/pdf/1810.04805",
+      "retrieval_date": "2026-08-21",
+      "license": "UNKNOWN (arXiv per-paper license; verify before redistribution)",
+      "license_url": "https://arxiv.org/abs/1810.04805",
+      "redistributable": false,
+      "local_filename": "CF-011_arxiv_1810.04805_bert.pdf",
+      "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "file_size_bytes": 775166,
+      "mime_type": "application/pdf",
+      "page_count": 16,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "two_column",
+        "figures",
+        "captions",
+        "references",
+        "tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-05",
+        "AP-09"
+      ],
+      "benchmark_relevance": "Two-column paper with multiple results tables and cross-references.",
+      "inclusion_reason": "Two-column academic layout; table/cross-reference density.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-012",
+      "category": "legal_statute",
+      "title": "Public Law 117-169 (Inflation Reduction Act of 2022)",
+      "source_organization": "U.S. Government Publishing Office (GovInfo)",
+      "source_url": "https://www.govinfo.gov/content/pkg/PLAW-117publ169/pdf/PLAW-117publ169.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.govinfo.gov/",
+      "redistributable": true,
+      "local_filename": "CF-012_plaw_117publ169.pdf",
+      "sha256": "5bd9bebe719d3d1738e751fe7978ef7bf05167ed8150471f306e010185baed4f",
+      "file_size_bytes": 876749,
+      "mime_type": "application/pdf",
+      "page_count": 274,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "nested_numbering",
+        "cross_references",
+        "defined_terms",
+        "dense_text"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "relationship",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-09",
+        "AP-08",
+        "AP-06"
+      ],
+      "benchmark_relevance": "Statutory nested section numbering with heavy internal cross-references and defined terms.",
+      "inclusion_reason": "Public-domain statute stressing hierarchical structure and cross-reference resolution.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-013",
+      "category": "legal_statute",
+      "title": "Public Law 116-136 (CARES Act)",
+      "source_organization": "U.S. Government Publishing Office (GovInfo)",
+      "source_url": "https://www.govinfo.gov/content/pkg/PLAW-116publ136/pdf/PLAW-116publ136.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.govinfo.gov/",
+      "redistributable": true,
+      "local_filename": "CF-013_plaw_116publ136.pdf",
+      "sha256": "67f5deb7607b8a4d09301cbdaf6d15402f632eb1ff74f5192d17d68eba0ece5d",
+      "file_size_bytes": 1017566,
+      "mime_type": "application/pdf",
+      "page_count": 335,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "nested_numbering",
+        "cross_references",
+        "defined_terms",
+        "dense_text"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "relationship",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-09",
+        "AP-08",
+        "AP-06"
+      ],
+      "benchmark_relevance": "Long statute with amendatory cross-references.",
+      "inclusion_reason": "Public-domain statute; hierarchical/cross-reference stress.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-014",
+      "category": "legal_statute",
+      "title": "Public Law 111-148 (Patient Protection and Affordable Care Act)",
+      "source_organization": "U.S. Government Publishing Office (GovInfo)",
+      "source_url": "https://www.govinfo.gov/content/pkg/PLAW-111publ148/pdf/PLAW-111publ148.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.govinfo.gov/",
+      "redistributable": true,
+      "local_filename": "CF-014_plaw_111publ148.pdf",
+      "sha256": "f5112f582ef4e15808cbcf5cb37ae21b6d7b66ee0166158898a7ce6b4562ac50",
+      "file_size_bytes": 2522301,
+      "mime_type": "application/pdf",
+      "page_count": 906,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "adversarial",
+      "difficulty_tags": [
+        "very_long",
+        "nested_numbering",
+        "cross_references",
+        "defined_terms",
+        "dense_text"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "relationship",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-09",
+        "AP-08",
+        "AP-06",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Very long statute; extreme cross-reference and hierarchy stress at scale.",
+      "inclusion_reason": "Public-domain long statute; large-scale structure/reference test.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-015",
+      "category": "technical_document",
+      "title": "NIST SP 800-53 Rev. 5 — Security and Privacy Controls",
+      "source_organization": "U.S. National Institute of Standards and Technology",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.nist.gov/",
+      "redistributable": true,
+      "local_filename": "CF-015_nist_sp_800-53r5.pdf",
+      "sha256": "fc63bcd61715d0181dd8e85998b1e6201ae3515fc6626102101cab1841e11ec6",
+      "file_size_bytes": 6073678,
+      "mime_type": "application/pdf",
+      "page_count": 492,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "multi_page_tables",
+        "cross_references",
+        "diagrams",
+        "TOC",
+        "dense_text"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "relationship",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-02",
+        "AP-09",
+        "AP-15",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Large control catalog with multi-page control tables, diagrams, and cross-references.",
+      "inclusion_reason": "Public-domain technical standard; table-continuation and cross-reference stress.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-016",
+      "category": "technical_document",
+      "title": "NIST SP 800-171 Rev. 2 — Protecting CUI in Nonfederal Systems",
+      "source_organization": "U.S. National Institute of Standards and Technology",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.nist.gov/",
+      "redistributable": true,
+      "local_filename": "CF-016_nist_sp_800-171r2.pdf",
+      "sha256": "298bdbfcf6a4890a564b225c893230a0b32b2e69e3b98dd898aaeb1d544c5e12",
+      "file_size_bytes": 1539170,
+      "mime_type": "application/pdf",
+      "page_count": 114,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "tables",
+        "cross_references",
+        "TOC",
+        "dense_text"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-09",
+        "AP-07",
+        "AP-03"
+      ],
+      "benchmark_relevance": "Control mapping tables with cross-references.",
+      "inclusion_reason": "Public-domain technical standard; mapping-table structure.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-017",
+      "category": "technical_document",
+      "title": "IRS Publication 17 — Your Federal Income Tax",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/p17.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-017_irs_pub17.pdf",
+      "sha256": "2d2381d62c7c77ed4b64b83ac23c28ed85b7c8304eb580c09bd9fd660be0840b",
+      "file_size_bytes": 3088632,
+      "mime_type": "application/pdf",
+      "page_count": 142,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "multi_column",
+        "tables",
+        "cross_references",
+        "TOC",
+        "worksheets"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-01",
+        "AP-09",
+        "AP-07",
+        "AP-03"
+      ],
+      "benchmark_relevance": "Long multi-column reference guide with worksheets, tables, and internal cross-references.",
+      "inclusion_reason": "Public-domain multi-column reference; layout + cross-reference composite.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-018",
+      "category": "technical_document",
+      "title": "NIST SP 800-63-3 — Digital Identity Guidelines",
+      "source_organization": "U.S. National Institute of Standards and Technology",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.nist.gov/",
+      "redistributable": true,
+      "local_filename": "CF-018_nist_sp_800-63-3.pdf",
+      "sha256": "915bb812cb705918461e642e84141c6ca2adc2ca0106e1d88f3884c61f07110a",
+      "file_size_bytes": 1599268,
+      "mime_type": "application/pdf",
+      "page_count": 76,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "flow_diagrams",
+        "cross_references",
+        "tables",
+        "TOC"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-15",
+        "AP-09",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Identity-flow diagrams (AP-15) with cross-references and tables.",
+      "inclusion_reason": "Public-domain technical standard replacing an unavailable RFC PDF; diagram + cross-reference stress.",
+      "exclusion_reason": null,
+      "notes": "Replaced original RFC 8446 candidate (rfc-editor.org PDF path returned 404 during ingestion)."
+    },
+    {
+      "document_id": "CF-019",
+      "category": "technical_document",
+      "title": "NIST FIPS 197 (upd1) — Advanced Encryption Standard (AES)",
+      "source_organization": "U.S. National Institute of Standards and Technology",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.nist.gov/",
+      "redistributable": true,
+      "local_filename": "CF-019_nist_fips_197-upd1.pdf",
+      "sha256": "62c86eb567f13edb8f71826e985da870b04ef6381634f303cdb16e84d47becd1",
+      "file_size_bytes": 1184436,
+      "mime_type": "application/pdf",
+      "page_count": 46,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "byte_matrix_diagrams",
+        "pseudocode",
+        "formulas",
+        "tables"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic"
+      ],
+      "adversarial_patterns": [
+        "AP-15",
+        "AP-03"
+      ],
+      "benchmark_relevance": "State/byte-matrix diagrams, pseudocode, and formulas (AP-15).",
+      "inclusion_reason": "Public-domain technical standard replacing an unavailable RFC PDF; diagram/formula structure.",
+      "exclusion_reason": null,
+      "notes": "Replaced original RFC 791 candidate (rfc-editor.org PDF path returned 404 during ingestion)."
+    },
+    {
+      "document_id": "CF-020",
+      "category": "invoice_statement_form",
+      "title": "IRS Form 1040 — U.S. Individual Income Tax Return",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-020_irs_f1040.pdf",
+      "sha256": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+      "file_size_bytes": 220237,
+      "mime_type": "application/pdf",
+      "page_count": 2,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "form_fields",
+        "boxes",
+        "merged_cells",
+        "totals"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "semantic"
+      ],
+      "adversarial_patterns": [
+        "AP-03",
+        "AP-11",
+        "AP-12"
+      ],
+      "benchmark_relevance": "Structured government form with boxed fields and computed totals.",
+      "inclusion_reason": "Public-domain form; box/grid layout and totals.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-021",
+      "category": "invoice_statement_form",
+      "title": "IRS Form W-2 — Wage and Tax Statement",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/fw2.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-021_irs_fw2.pdf",
+      "sha256": "61eca7c81f16d3965819fe1f31be4fe68c1b2887a81f51172f1d2ed2b2b9f087",
+      "file_size_bytes": 2150352,
+      "mime_type": "application/pdf",
+      "page_count": 11,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "repeated_form_grid",
+        "boxes",
+        "merged_cells",
+        "repeated_copies"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-03",
+        "AP-08",
+        "AP-12"
+      ],
+      "benchmark_relevance": "Repeated boxed grid (multiple copies of the same form) stressing dedup + provenance.",
+      "inclusion_reason": "Public-domain repeated-grid form; box structure and repetition.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-022",
+      "category": "invoice_statement_form",
+      "title": "IRS Form 941 — Employer's Quarterly Federal Tax Return",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/f941.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-022_irs_f941.pdf",
+      "sha256": "38a3d8cf7a455101d52543c8c48e66202bc25c189ead878627e35c797c88e2ad",
+      "file_size_bytes": 841648,
+      "mime_type": "application/pdf",
+      "page_count": 3,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "boxes",
+        "merged_cells",
+        "line_item_totals"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic"
+      ],
+      "adversarial_patterns": [
+        "AP-03",
+        "AP-11",
+        "AP-12"
+      ],
+      "benchmark_relevance": "Quarterly return with computed line-item totals.",
+      "inclusion_reason": "Public-domain form; merged headers and totals.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-023",
+      "category": "invoice_statement_form",
+      "title": "IRS Form 1099-NEC — Nonemployee Compensation",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/f1099nec.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-023_irs_f1099nec.pdf",
+      "sha256": "68a8f00078be6dd6a4912cc4209df317b31840d5fe19560222d39df9f2f7ff49",
+      "file_size_bytes": 537467,
+      "mime_type": "application/pdf",
+      "page_count": 6,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "repeated_form_grid",
+        "boxes",
+        "colored_multi_copy"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "layout"
+      ],
+      "adversarial_patterns": [
+        "AP-08",
+        "AP-12",
+        "AP-03"
+      ],
+      "benchmark_relevance": "Multi-copy information return; repeated boxed layout.",
+      "inclusion_reason": "Public-domain repeated-grid form.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-024",
+      "category": "invoice_statement_form",
+      "title": "IRS Form 1120 — U.S. Corporation Income Tax Return",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/f1120.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-024_irs_f1120.pdf",
+      "sha256": "016c7fb4042a565c23a98014b17019af7ddc89e3260dd3f926b84d6688b7be6e",
+      "file_size_bytes": 340034,
+      "mime_type": "application/pdf",
+      "page_count": 6,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "boxes",
+        "financial_line_items",
+        "totals",
+        "schedules"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-03",
+        "AP-12"
+      ],
+      "benchmark_relevance": "Corporate return with multiple schedules and computed totals.",
+      "inclusion_reason": "Public-domain corporate financial form.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-025",
+      "category": "invoice_statement_form",
+      "title": "IRS Schedule C (Form 1040) — Profit or Loss From Business",
+      "source_organization": "U.S. Internal Revenue Service",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/f1040sc.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.irs.gov/",
+      "redistributable": true,
+      "local_filename": "CF-025_irs_f1040sc.pdf",
+      "sha256": "ddf401dbe060467d39f90ad2abf645df1de31512821a150dc68a3882bbf19716",
+      "file_size_bytes": 122589,
+      "mime_type": "application/pdf",
+      "page_count": 2,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "easy",
+      "difficulty_tags": [
+        "boxes",
+        "line_item_totals"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-12"
+      ],
+      "benchmark_relevance": "Small business profit/loss schedule with computed totals.",
+      "inclusion_reason": "Public-domain financial schedule; smaller structured form for difficulty range.",
+      "exclusion_reason": null,
+      "notes": null
+    },
+    {
+      "document_id": "CF-026",
+      "category": "financial_annual_report",
+      "title": "Monetary Policy Report to the Congress, February 1997 (historical)",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/boarddocs/hh/1997/february/FullReport.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-026_fed_hh_1997-02.pdf",
+      "sha256": "8ab9e358b940b043fcb94bf1c31b65f3c030d1e600493cd95db7346258bd886a",
+      "file_size_bytes": 199280,
+      "mime_type": "application/pdf",
+      "page_count": 26,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "financial_tables",
+        "charts",
+        "historical"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-04",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Historical financial report with tables and charts; adds temporal diversity to the report series.",
+      "inclusion_reason": "Public-domain historical financial report.",
+      "exclusion_reason": null,
+      "notes": "QA probe (text density ~1755 chars/page, 0 image-only pages) confirmed this file is BORN-DIGITAL, not scanned. Original 'scanned' hypothesis was FALSE; retagged native. Does NOT satisfy AP-14 (scanned) — see corpus report for the AP-14 gap."
+    },
+    {
+      "document_id": "CF-027",
+      "category": "financial_annual_report",
+      "title": "Monetary Policy Report to the Congress, February 1998 (historical)",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/boarddocs/hh/1998/february/FullReport.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-027_fed_hh_1998-02.pdf",
+      "sha256": "8263c8398deb1b98505333e9be2f4241e0a8f222af19b9bd72d0d0bf4e4e995c",
+      "file_size_bytes": 194135,
+      "mime_type": "application/pdf",
+      "page_count": 31,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "financial_tables",
+        "charts",
+        "historical"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Historical financial report; temporal diversity.",
+      "inclusion_reason": "Public-domain historical financial report.",
+      "exclusion_reason": null,
+      "notes": "QA probe (text density ~1723 chars/page) confirmed BORN-DIGITAL, not scanned. Retagged native; does NOT satisfy AP-14."
+    },
+    {
+      "document_id": "CF-028",
+      "category": "financial_annual_report",
+      "title": "Monetary Policy Report to the Congress, February 1999 (historical)",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/boarddocs/hh/1999/february/FullReport.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-028_fed_hh_1999-02.pdf",
+      "sha256": "b96fbc420494ad56a2796c4facb0ba827b0ad8e6dc616a3e5a9f9269562721f4",
+      "file_size_bytes": 258318,
+      "mime_type": "application/pdf",
+      "page_count": 34,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "financial_tables",
+        "charts",
+        "historical"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "provenance"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-07"
+      ],
+      "benchmark_relevance": "Historical financial report; temporal diversity.",
+      "inclusion_reason": "Public-domain historical financial report.",
+      "exclusion_reason": null,
+      "notes": "Scanned status to be confirmed post-download."
+    },
+    {
+      "document_id": "CF-029",
+      "category": "investor_presentation",
+      "title": "Federal Reserve Financial Stability Report (chart-heavy)",
+      "source_organization": "Board of Governors of the Federal Reserve System",
+      "source_url": "https://www.federalreserve.gov/publications/files/financial-stability-report-20241122.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Public Domain (U.S. Government work, 17 U.S.C. §105)",
+      "license_url": "https://www.federalreserve.gov/website-linking-policies.htm",
+      "redistributable": true,
+      "local_filename": "CF-029_fed_financial_stability_report.pdf",
+      "sha256": "1cbe90304b0ab35a9fedee57146d734b3cb88304959f31b4ec9e3c5e69c3003c",
+      "file_size_bytes": 4997421,
+      "mime_type": "application/pdf",
+      "page_count": 69,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "hard",
+      "difficulty_tags": [
+        "chart_dense",
+        "chart_table_relationship",
+        "boxes",
+        "callouts"
+      ],
+      "fidelity_dimensions": [
+        "layout",
+        "relationship",
+        "semantic",
+        "answerability"
+      ],
+      "adversarial_patterns": [
+        "AP-04",
+        "AP-12",
+        "AP-10"
+      ],
+      "benchmark_relevance": "Chart-dense report acting as a proxy for presentation-style chart/callout reading (candidate; verify URL).",
+      "inclusion_reason": "Chart-heavy public-domain report; partial proxy for the under-covered presentation category.",
+      "exclusion_reason": null,
+      "notes": "Candidate URL (date-specific); if it fails ingestion it will be replaced or dropped and the presentation category documented as thin."
+    },
+    {
+      "document_id": "CF-030",
+      "category": "financial_annual_report",
+      "title": "Berkshire Hathaway Inc. — 2022 Shareholder Letter",
+      "source_organization": "Berkshire Hathaway Inc.",
+      "source_url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf",
+      "retrieval_date": "2026-08-21",
+      "license": "Copyright Berkshire Hathaway Inc. (publicly available; redistribution not granted)",
+      "license_url": "https://www.berkshirehathaway.com/",
+      "redistributable": false,
+      "local_filename": "CF-030_berkshire_2022_letter.pdf",
+      "sha256": "a99f263003295b177e8c50ec34f2307093857a357276527e98d5a6205e21a908",
+      "file_size_bytes": 55589,
+      "mime_type": "application/pdf",
+      "page_count": 10,
+      "language": "en",
+      "native_or_scanned": "native",
+      "difficulty": "medium",
+      "difficulty_tags": [
+        "financial_tables",
+        "narrative_number_relationships"
+      ],
+      "fidelity_dimensions": [
+        "content",
+        "structure",
+        "semantic",
+        "relationship"
+      ],
+      "adversarial_patterns": [
+        "AP-11",
+        "AP-08",
+        "AP-10"
+      ],
+      "benchmark_relevance": "Second period of the narrative+table financial series.",
+      "inclusion_reason": "Narrative-table coupling; reference-only (copyright).",
+      "exclusion_reason": null,
+      "notes": "Metadata + hash only; not redistributed."
+    }
+  ]
+}
