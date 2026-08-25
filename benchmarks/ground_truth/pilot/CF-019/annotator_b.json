@@ -1,0 +1,40 @@
+{
+  "document_id": "CF-019",
+  "annotator": "annotator_b",
+  "groundtruth_version": "groundtruth-v0.1-pilot",
+  "annotation_status": "single",
+  "pilot_slice": { "pages": [6, 7, 8, 9], "description": "FIPS 197 front matter and introduction pilot slice." },
+  "nodes": [
+    { "id": "CF-019/r01", "type": "heading", "normalized_content": "Table of Contents", "source_order": 1, "provenance": { "document_id": "CF-019", "page_number": 6, "bbox": null, "text_anchor": "Table of Contents" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r02", "type": "list", "subtype": "toc", "normalized_content": "Table of contents entries", "source_order": 2, "provenance": { "document_id": "CF-019", "page_number": 6, "bbox": null, "text_anchor": "1 Introduction 2 Definitions 3 Notation and Conventions 4 Mathematical Preliminaries" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r03", "type": "list_item", "normalized_content": "1 Introduction ... 1", "source_order": 3, "provenance": { "document_id": "CF-019", "page_number": 6, "bbox": null, "text_anchor": "Introduction 1" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r04", "type": "list_item", "normalized_content": "5 Algorithm Specifications ... 11", "source_order": 4, "provenance": { "document_id": "CF-019", "page_number": 6, "bbox": null, "text_anchor": "Algorithm Speci" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r05", "type": "heading", "normalized_content": "List of Tables", "source_order": 5, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "List of Tables" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r06", "type": "table", "subtype": "list_of_tables", "normalized_content": "List of tables (title | page)", "source_order": 6, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "Table 2 Indices for bytes and bits Table 3 Key-Block-Round Combinations Table 5 Round constants" }, "confidence": "medium", "state": "uncertain", "notes": "Two aligned columns (caption, page) read as a table." },
+    { "id": "CF-019/r07", "type": "table_row", "normalized_content": "Table 1 Hexadecimal representation of 4-bit sequences | 5", "source_order": 7, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "Table 1 Hexadecimal representation of 4-bit sequences" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r08", "type": "table_row", "normalized_content": "Table 4 SBOX(): substitution values for the byte xy | 14", "source_order": 8, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "Table 4 SBOX(): substitution values for the byte xy" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r09", "type": "heading", "normalized_content": "List of Figures", "source_order": 9, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "List of Figures" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r10", "type": "list_item", "normalized_content": "Figure 1 State array input and output ... 7", "source_order": 10, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "Figure 1 State array input and output" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r11", "type": "other", "subtype": "table_reference", "normalized_content": "Table 1 (target on page 5)", "source_order": 11, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "Table 1 Hexadecimal representation" }, "confidence": "low", "state": "uncertain", "notes": null },
+    { "id": "CF-019/r12", "type": "other", "subtype": "figure_reference", "normalized_content": "Figure 1 (target on page 7)", "source_order": 12, "provenance": { "document_id": "CF-019", "page_number": 8, "bbox": null, "text_anchor": "Figure 1 State array" }, "confidence": "low", "state": "uncertain", "notes": null },
+    { "id": "CF-019/r13", "type": "heading", "normalized_content": "1. Introduction", "source_order": 13, "provenance": { "document_id": "CF-019", "page_number": 9, "bbox": null, "text_anchor": "1. Introduction" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/r14", "type": "paragraph", "normalized_content": "In 2000, NIST announced the selection of Rijndael for the AES. This Standard specifies AES-128, AES-192, and AES-256. The block size is 128 bits.", "source_order": 14, "provenance": { "document_id": "CF-019", "page_number": 9, "bbox": null, "text_anchor": "the selection of Rijndael" }, "confidence": "high", "state": "ok", "notes": null }
+  ],
+  "edges": [
+    { "id": "CF-019/be1", "type": "contains", "source_id": "CF-019/r02", "target_id": "CF-019/r03", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be2", "type": "contains", "source_id": "CF-019/r02", "target_id": "CF-019/r04", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be3", "type": "contains", "source_id": "CF-019/r06", "target_id": "CF-019/r07", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be4", "type": "contains", "source_id": "CF-019/r06", "target_id": "CF-019/r08", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be5", "type": "belongs_to", "source_id": "CF-019/r06", "target_id": "CF-019/r05", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be6", "type": "belongs_to", "source_id": "CF-019/r02", "target_id": "CF-019/r01", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be7", "type": "belongs_to", "source_id": "CF-019/r10", "target_id": "CF-019/r09", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be8", "type": "belongs_to", "source_id": "CF-019/r14", "target_id": "CF-019/r13", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be9", "type": "references", "source_id": "CF-019/r07", "target_id": "CF-019/r11", "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/be10", "type": "references", "source_id": "CF-019/r10", "target_id": "CF-019/r12", "confidence": "high", "state": "ok", "notes": null }
+  ],
+  "facts": [
+    { "id": "CF-019/bf1", "subject": "AES block size", "predicate": "is", "object": "128", "unit": "bits", "sign": null, "qualifier": "for all key lengths", "period": null, "source_node": "CF-019/r14", "provenance": { "document_id": "CF-019", "page_number": 9, "bbox": null, "text_anchor": "block size (i.e., the length of the data inputs and outputs) is 128 bits" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/bf2", "subject": "AES", "predicate": "specifies_instantiations", "object": "AES-128, AES-192, AES-256", "unit": null, "sign": null, "qualifier": null, "period": null, "source_node": "CF-019/r14", "provenance": { "document_id": "CF-019", "page_number": 9, "bbox": null, "text_anchor": "three instantiations of Rijndael: AES-128, AES-192, and AES-256" }, "confidence": "high", "state": "ok", "notes": null },
+    { "id": "CF-019/bf3", "subject": "Rijndael", "predicate": "selected_as_AES_in", "object": "2000", "unit": null, "sign": null, "qualifier": null, "period": "2000", "source_node": "CF-019/r14", "provenance": { "document_id": "CF-019", "page_number": 9, "bbox": null, "text_anchor": "In 2000, NIST announced the selection of Rijndael" }, "confidence": "high", "state": "ok", "notes": null }
+  ]
+}

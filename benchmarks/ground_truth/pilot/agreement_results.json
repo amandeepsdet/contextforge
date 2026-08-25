@@ -1,0 +1,182 @@
+{
+  "CF-001": {
+    "node_type": {
+      "aligned": 19,
+      "raw_agreement": 0.7895,
+      "cohen_kappa": 0.7206,
+      "a_nodes": 19,
+      "b_nodes": 19
+    },
+    "structural_membership": {
+      "comparable": 8,
+      "agreement": 1.0
+    },
+    "reading_order": {
+      "kendall_tau": 1.0
+    },
+    "relationship_edges": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 2,
+      "a_total": 2,
+      "b_total": 2
+    },
+    "facts": {
+      "precision": 0.8333,
+      "recall": 0.8333,
+      "f1": 0.8333,
+      "tp": 5,
+      "a_total": 6,
+      "b_total": 6
+    },
+    "provenance": {
+      "aligned_facts": 6,
+      "location_agreement": 1.0
+    }
+  },
+  "CF-004": {
+    "node_type": {
+      "aligned": 13,
+      "raw_agreement": 0.7692,
+      "cohen_kappa": 0.7174,
+      "a_nodes": 13,
+      "b_nodes": 13
+    },
+    "structural_membership": {
+      "comparable": 8,
+      "agreement": 1.0
+    },
+    "reading_order": {
+      "kendall_tau": 1.0
+    },
+    "relationship_edges": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 1,
+      "a_total": 1,
+      "b_total": 1
+    },
+    "facts": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "tp": 3,
+      "a_total": 4,
+      "b_total": 4
+    },
+    "provenance": {
+      "aligned_facts": 4,
+      "location_agreement": 1.0
+    }
+  },
+  "CF-006": {
+    "node_type": {
+      "aligned": 19,
+      "raw_agreement": 0.9474,
+      "cohen_kappa": 0.9347,
+      "a_nodes": 19,
+      "b_nodes": 19
+    },
+    "structural_membership": {
+      "comparable": 5,
+      "agreement": 1.0
+    },
+    "reading_order": {
+      "kendall_tau": 1.0
+    },
+    "relationship_edges": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "tp": 3,
+      "a_total": 4,
+      "b_total": 4
+    },
+    "facts": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 4,
+      "a_total": 4,
+      "b_total": 4
+    },
+    "provenance": {
+      "aligned_facts": 4,
+      "location_agreement": 1.0
+    }
+  },
+  "CF-012": {
+    "node_type": {
+      "aligned": 13,
+      "raw_agreement": 0.8462,
+      "cohen_kappa": 0.7759,
+      "a_nodes": 14,
+      "b_nodes": 13
+    },
+    "structural_membership": {
+      "comparable": 7,
+      "agreement": 1.0
+    },
+    "reading_order": {
+      "kendall_tau": 1.0
+    },
+    "relationship_edges": {
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "tp": 2,
+      "a_total": 3,
+      "b_total": 2
+    },
+    "facts": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "tp": 2,
+      "a_total": 4,
+      "b_total": 4
+    },
+    "provenance": {
+      "aligned_facts": 4,
+      "location_agreement": 1.0
+    }
+  },
+  "CF-019": {
+    "node_type": {
+      "aligned": 14,
+      "raw_agreement": 0.7857,
+      "cohen_kappa": 0.7342,
+      "a_nodes": 14,
+      "b_nodes": 14
+    },
+    "structural_membership": {
+      "comparable": 8,
+      "agreement": 1.0
+    },
+    "reading_order": {
+      "kendall_tau": 1.0
+    },
+    "relationship_edges": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 2,
+      "a_total": 2,
+      "b_total": 2
+    },
+    "facts": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 3,
+      "a_total": 3,
+      "b_total": 3
+    },
+    "provenance": {
+      "aligned_facts": 3,
+      "location_agreement": 1.0
+    }
+  }
+}

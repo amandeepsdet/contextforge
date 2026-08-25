@@ -1,0 +1,128 @@
+{
+  "groundtruth_version": "groundtruth-v0.1-pilot",
+  "generated": "2026-08-25",
+  "description": "Material inter-annotator disagreements for the 5-document ground-truth pilot, with adjudication outcomes. Both annotation passes were produced independently; see 05_ground_truth_pilot_report.md for the single-agent IAA caveat.",
+  "categories": ["annotation_error", "schema_ambiguity", "visual_ambiguity", "semantic_ambiguity", "provenance_ambiguity", "source_document_ambiguity", "annotation_style"],
+  "disagreements": [
+    {
+      "id": "D-01",
+      "document_id": "CF-001",
+      "annotation_type": "node_type",
+      "items": ["CF-001/p9/list1", "CF-001/p9/li1", "CF-001/p9/li2", "CF-001/p9/li3"],
+      "annotator_a": "list + list_item (glossary of abbreviations)",
+      "annotator_b": "table + table_row (two-column term/expansion)",
+      "category": "schema_ambiguity",
+      "reason": "A two-column term/definition block with no visible ruling can be read as a list or a table.",
+      "adjudicated_result": "list + list_item",
+      "guideline_change": "GC-1"
+    },
+    {
+      "id": "D-02",
+      "document_id": "CF-001",
+      "annotation_type": "fact",
+      "items": ["CF-001/f5"],
+      "annotator_a": "object 100, unit basis_points",
+      "annotator_b": "object 1, unit percent (converted 100 bp -> 1%)",
+      "category": "semantic_ambiguity",
+      "reason": "Annotator B converted basis points to percent, changing the stated unit.",
+      "adjudicated_result": "object 100, unit basis_points; 1-percentage-point equivalence in qualifier",
+      "guideline_change": "GC-3"
+    },
+    {
+      "id": "D-03",
+      "document_id": "CF-006",
+      "annotation_type": "edge_type",
+      "items": ["CF-006/e7 (annotates cap->fig)", "CF-006/be7 (illustrates fig->section)"],
+      "annotator_a": "annotates: caption -> figure",
+      "annotator_b": "illustrates: figure -> processing-pipeline section (caption folded into figure)",
+      "category": "schema_ambiguity",
+      "reason": "Both a caption->figure attachment and a figure->section depiction are defensible and were treated as mutually exclusive.",
+      "adjudicated_result": "keep both: annotates (caption->figure) required, illustrates (figure->section) optional",
+      "guideline_change": "GC-4"
+    },
+    {
+      "id": "D-04",
+      "document_id": "CF-006",
+      "annotation_type": "node_type",
+      "items": ["CF-006/p2/code1"],
+      "annotator_a": "code_block",
+      "annotator_b": "other (subtype code)",
+      "category": "schema_ambiguity",
+      "reason": "Monospaced source example; annotator B did not use the dedicated code node type.",
+      "adjudicated_result": "code_block",
+      "guideline_change": "GC-5"
+    },
+    {
+      "id": "D-05",
+      "document_id": "CF-012",
+      "annotation_type": "node_type",
+      "items": ["CF-012/p2/margin55", "CF-012/p3/margindef"],
+      "annotator_a": "other (subtype margin_note)",
+      "annotator_b": "footnote",
+      "category": "schema_ambiguity",
+      "reason": "Statutory marginal side-notes ('26 USC 55', 'Definition.') resemble footnotes but are marginal glosses.",
+      "adjudicated_result": "other (subtype margin_note)",
+      "guideline_change": "GC-6"
+    },
+    {
+      "id": "D-06",
+      "document_id": "CF-012",
+      "annotation_type": "edge_presence",
+      "items": ["CF-012/e8 (references paraA->ref55)", "CF-012/p2/ref55"],
+      "annotator_a": "created a references edge to an external statutory-reference node (state unresolved)",
+      "annotator_b": "omitted the external cross-reference entirely",
+      "category": "schema_ambiguity",
+      "reason": "Unclear whether external cross-reference targets (IRC section 55(b)) should be represented when their body is outside the document.",
+      "adjudicated_result": "represent as a node with state 'unresolved' plus the references edge",
+      "guideline_change": "GC-8"
+    },
+    {
+      "id": "D-07",
+      "document_id": "CF-012",
+      "annotation_type": "fact",
+      "items": ["CF-012/f2", "CF-012/f3"],
+      "annotator_a": "object with grouping separators ($1,000,000,000 -> '1,000,000,000')",
+      "annotator_b": "object as bare digits ('1000000000')",
+      "category": "annotation_style",
+      "reason": "No rule for numeric normalization of grouped monetary values.",
+      "adjudicated_result": "bare digits in object; grouped form preserved in qualifier",
+      "guideline_change": "GC-7"
+    },
+    {
+      "id": "D-08",
+      "document_id": "CF-019",
+      "annotation_type": "node_type",
+      "items": ["CF-019/p8/lotlist", "CF-019/p8/lt1", "CF-019/p8/lt4"],
+      "annotator_a": "list + list_item (List of Tables reference list)",
+      "annotator_b": "table + table_row",
+      "category": "schema_ambiguity",
+      "reason": "A caption reference list with dot leaders and page numbers looks tabular.",
+      "adjudicated_result": "list + list_item",
+      "guideline_change": "GC-9"
+    },
+    {
+      "id": "D-09",
+      "document_id": "CF-004",
+      "annotation_type": "node_type",
+      "items": ["CF-004/p6/lstlist", "CF-004/p6/lt11", "CF-004/p6/lt16"],
+      "annotator_a": "list + list_item (List of Statistical Tables)",
+      "annotator_b": "table + table_row",
+      "category": "schema_ambiguity",
+      "reason": "Same List-of-Tables ambiguity as D-08.",
+      "adjudicated_result": "list + list_item",
+      "guideline_change": "GC-9"
+    },
+    {
+      "id": "D-10",
+      "document_id": "CF-004",
+      "annotation_type": "fact",
+      "items": ["CF-004/f1"],
+      "annotator_a": "object 5.3, unit USD_trillion",
+      "annotator_b": "object 5300000000000, unit USD (expanded)",
+      "category": "semantic_ambiguity",
+      "reason": "Expanding '$5.3 trillion' to full digits implies precision the source does not state.",
+      "adjudicated_result": "object 5.3, unit USD_trillion (keep the scale word)",
+      "guideline_change": "GC-10"
+    }
+  ]
+}
