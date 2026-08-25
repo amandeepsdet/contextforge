@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/amandeepsdet/contextforge/benchmarks/ground_truth/schemas/ground_truth.schema.json",
+  "title": "ContextForge benchmark ground-truth annotation (pilot)",
+  "description": "Schema for a single annotation file (annotator_a, annotator_b, or adjudicated) for one document. This is BENCHMARK ground truth, not the production IR (see 02_benchmark_spec.md Section 6).",
+  "type": "object",
+  "required": ["document_id", "annotator", "groundtruth_version", "annotation_status", "nodes", "edges", "facts"],
+  "additionalProperties": false,
+  "properties": {
+    "document_id": { "type": "string", "pattern": "^CF-[0-9]{3}$" },
+    "annotator": { "type": "string", "enum": ["annotator_a", "annotator_b", "adjudicated"] },
+    "groundtruth_version": { "type": "string" },
+    "annotation_status": { "type": "string", "enum": ["single", "double", "adjudicated"] },
+    "pilot_slice": {
+      "type": "object",
+      "required": ["pages", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "pages": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "minItems": 1 },
+        "description": { "type": "string" }
+      }
+    },
+    "nodes": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } },
+    "facts": { "type": "array", "items": { "$ref": "#/$defs/fact" } }
+  },
+  "$defs": {
+    "state": { "type": "string", "enum": ["ok", "uncertain", "unresolved", "not_applicable"] },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+    "provenance": {
+      "type": "object",
+      "required": ["document_id", "page_number"],
+      "additionalProperties": false,
+      "properties": {
+        "document_id": { "type": "string", "pattern": "^CF-[0-9]{3}$" },
+        "page_number": { "type": ["integer", "null"], "minimum": 1 },
+        "bbox": {
+          "description": "null when reliable coordinates are unavailable (see guidelines Section 4). Do not invent coordinates.",
+          "type": ["array", "null"],
+          "items": { "type": "number" },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "text_anchor": { "type": ["string", "null"] },
+        "table_id": { "type": ["string", "null"] },
+        "row": { "type": ["integer", "null"] },
+        "column": { "type": ["integer", "null"] },
+        "cell": { "type": ["string", "null"] }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "type", "provenance"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "document", "page", "heading", "paragraph", "list", "list_item",
+            "table", "table_row", "table_cell", "figure", "chart", "caption",
+            "footnote", "equation", "code_block", "other"
+          ]
+        },
+        "subtype": { "type": ["string", "null"] },
+        "normalized_content": { "type": ["string", "null"] },
+        "raw_content": { "type": ["string", "null"] },
+        "source_order": { "type": ["integer", "null"] },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "state": { "$ref": "#/$defs/state" },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "type", "source_id", "target_id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "contains", "follows", "continues", "references", "explains",
+            "illustrates", "derived_from", "annotates", "cites", "belongs_to"
+          ]
+        },
+        "source_id": { "type": "string", "minLength": 1 },
+        "target_id": { "type": "string", "minLength": 1 },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "state": { "$ref": "#/$defs/state" },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "required": ["id", "subject", "predicate", "object", "source_node", "provenance"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "subject": { "type": "string" },
+        "predicate": { "type": "string" },
+        "object": { "type": "string" },
+        "unit": { "type": ["string", "null"] },
+        "sign": { "type": ["string", "null"], "enum": ["positive", "negative", null] },
+        "qualifier": { "type": ["string", "null"] },
+        "period": { "type": ["string", "null"] },
+        "source_node": { "type": "string", "minLength": 1 },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "state": { "$ref": "#/$defs/state" },
+        "notes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
