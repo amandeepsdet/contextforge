@@ -12,7 +12,7 @@ repository currently contains *research and specification artifacts only*.
 ## What ContextForge is (and is not)
 
 ContextForge is **not** simply "PDF → Markdown". Markdown is only one of several
-possible output representations. The intended pipeline is:
+possible output representations. The intended pipeline is as follow:
 
 ```
 Source Document
